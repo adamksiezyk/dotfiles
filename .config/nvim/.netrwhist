@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/ksiezyk/.config/nvim'
+let g:netrw_dirhist_3='/home/ksiezyk/.config'
+let g:netrw_dirhist_2='/home/ksiezyk'
+let g:netrw_dirhist_1='/home/ksiezyk/workspace'
+let g:netrw_dirhist_0='/home/ksiezyk/workspace/pipelines'
+let g:netrw_dirhist_9='/home/ksiezyk/.config/nvim/lua/ksiezyk'
+let g:netrw_dirhist_8='/home/ksiezyk/.config/nvim/lua'
+let g:netrw_dirhist_7='/home/ksiezyk/.config/nvim'
+let g:netrw_dirhist_6='/home/ksiezyk/.config'
+let g:netrw_dirhist_5='/home/ksiezyk'

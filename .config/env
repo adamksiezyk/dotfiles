@@ -1,0 +1,49 @@
+# Default editor
+export EDITOR=vim
+
+# Aliases
+[ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
+
+# ~/ clean-up
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/history"
+export LESSHISTFILE="-"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"
+export KRB5_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kerberos/krb5.conf"
+export KEYTABS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kerberos"
+export KUBECONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kube/kubeconfig"
+export KUBECACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/kube"
+export RUSTUP_HOME="${XDG_CONFIG_DIR:-$HOME/.config}/rustup"
+export CARGO_HOME="${XDG_CONFIG_DIR:-$HOME/.config}/cargo"
+
+# Prompt style
+if [ -r /usr/lib/git-core/git-sh-prompt ]; then
+  source /usr/lib/git-core/git-sh-prompt
+  #export GIT_PS1_SHOWDIRTYSTATE=1
+  #export GIT_PS1_SHOWUNTRACKEDFILES=1
+  export GIT_PS1_SHOWSTASHSTATE=1
+  export GIT_PS1_SHOWUPSTREAM=1
+  export PS1="${PS1%\\$ } \$(__git_ps1 '(%s)')\n\$ "
+fi
+
+# Proxy
+PROXY_PAC="${XDG_CACHE_HOME:-$HOME/.cache}/nokia_proxy.pac.env"
+[ -f $PROXY_PAC ] && source $PROXY_PAC
+
+# Enable docker service on shell startup
+flock ~ -c '
+  sudo service docker status > /dev/null || \
+  sudo service docker start > /dev/null
+'
+# Listening port needs to be the same as defined in /etc/default/docker
+export DOCKER_HOST=tcp://localhost:2380
+
+# Add opt apps to PATH
+export PATH=/opt/nvim/bin:$PATH
+
+# kubectl bash completion
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k

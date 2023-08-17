@@ -1,0 +1,24 @@
+# ls
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# mkdir and change into it
+function mkcd() {
+	mkdir -p "$@" && cd "$@";
+}
+
+# recursive cp and rm
+alias cp='cp -r'
+alias rm='rm -r'
+
+# Python venv
+function activate() {
+	[ -d ./venv ] && source ./venv/bin/activate
+}
+
+# nvim
+alias vim='nvim'
+
+# kubectl
+alias k=kubectl
