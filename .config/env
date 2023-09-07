@@ -29,10 +29,6 @@ if [ -r /usr/lib/git-core/git-sh-prompt ]; then
   export PS1="${PS1%\\$ } \$(__git_ps1 '(%s)')\n\$ "
 fi
 
-# Proxy
-PROXY_PAC="${XDG_CACHE_HOME:-$HOME/.cache}/nokia_proxy.pac.env"
-[ -f $PROXY_PAC ] && source $PROXY_PAC
-
 # Enable docker service on shell startup
 flock ~ -c '
   sudo service docker status > /dev/null || \
@@ -43,6 +39,7 @@ export DOCKER_HOST=tcp://localhost:2380
 
 # Add opt apps to PATH
 export PATH=/opt/nvim/bin:$PATH
+export PATH=/opt/node/bin:$PATH
 
 # kubectl bash completion
 source <(kubectl completion bash)
