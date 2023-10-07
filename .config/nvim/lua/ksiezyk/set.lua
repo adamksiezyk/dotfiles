@@ -19,7 +19,8 @@ vim.opt.guicursor = "i:block"
 vim.opt.textwidth = 120
 vim.opt.formatoptions = vim.opt.formatoptions:remove('t')
 
-vim.g.clipboard = {
+-- WSL clipboard
+--[[ vim.g.clipboard = {
 	name = 'WslClipboard',
 	copy = {
 		['+'] = 'clip.exe',
@@ -30,4 +31,4 @@ vim.g.clipboard = {
 		['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
 	},
 	cache_enabled = 0,
-}
+--]] }
