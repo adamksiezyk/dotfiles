@@ -46,9 +46,10 @@ local null_ls = require('null-ls')
 
 local formatting = null_ls.builtins.formatting
 local sources = {
+	-- formatting.isort.with({ extra_args = { "--profile", "black" } }),
+	-- formatting.black.with({ extra_args = { "--line-length", "120" } }),
 	formatting.isort,
-	formatting.black,
-	-- formatting.autopep8,
+	formatting.autopep8.with({ extra_args = { "--max-line-length", "120" } }),
 	formatting.latexindent
 }
 
