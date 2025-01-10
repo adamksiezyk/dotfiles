@@ -3,7 +3,7 @@ local telescope = require('telescope.builtin')
 
 lsp.ensure_installed({
 	'rust_analyzer',
-	'tsserver',
+	'ts_ls',
 	'eslint',
 	'lua_ls',
 	'pyright',
@@ -42,6 +42,3 @@ local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
-
-
-null_ls.setup({ sources = sources })
