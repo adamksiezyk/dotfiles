@@ -8,8 +8,9 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                            , branch = '0.1.x',
+		'nvim-telescope/telescope.nvim',
+		-- tag = '0.1.8',
+		branch = 'master',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
@@ -27,7 +28,7 @@ return require('packer').startup(function(use)
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v4.x',
 		requires = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' }, -- Required
@@ -47,12 +48,21 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use({ 'jose-elias-alvarez/null-ls.nvim' })
+	use({ 'nvimtools/none-ls.nvim' })
 
-	use {
-		'lewis6991/gitsigns.nvim',
-		-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
-	}
+	use({ 'lewis6991/gitsigns.nvim' })
 
 	use({ 'alexghergh/nvim-tmux-navigation' })
+
+	use({ 'github/copilot.vim' })
+
+	use({
+		"CopilotC-Nvim/CopilotChat.nvim",
+		requires = {
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
+		}
+	})
+
+	use({ 'tomasky/bookmarks.nvim' })
 end)

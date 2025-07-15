@@ -1,7 +1,7 @@
 local null_ls = require('null-ls')
 local formatting = null_ls.builtins.formatting
 local h = require('null-ls.helpers')
-local line_len = "120"
+local line_len = "119"
 
 local docformatter = h.make_builtin({
 	name = "docformatter",
@@ -17,6 +17,7 @@ local docformatter = h.make_builtin({
 			"--wrap-summaries", line_len,
 			"--wrap-descriptions", line_len,
 			"--pre-summary-newline",
+			"--make-summary-multiline",
 			"--black",
 			"-",
 		},
@@ -26,10 +27,10 @@ local docformatter = h.make_builtin({
 })
 
 local sources = {
-	formatting.isort.with({ extra_args = { "--profile", "black" } }),
-	formatting.black.with({ extra_args = { "--line-length", line_len } }),
+	formatting.isort.with({ extra_args = { "--profile", "black", "-l", line_len } }),
+	formatting.black, -- .with({ extra_args = { "--line-length", line_len } }),
 	-- formatting.autopep8.with({ extra_args = { "--max-line-length", line_len, "--experimental" } }),
 	docformatter,
-	formatting.latexindent
+	-- formatting.latexindent
 }
 null_ls.setup({ sources = sources })

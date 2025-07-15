@@ -31,4 +31,5 @@ vim.opt.formatoptions = vim.opt.formatoptions:remove('t')
 		['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
 	},
 	cache_enabled = 0,
---]] }
+}
+--]] 
